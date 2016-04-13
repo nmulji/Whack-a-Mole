@@ -1,0 +1,7 @@
+div.squares {
+	height: 8em;
+	width: 8em;
+	border: 1px solid black;
+	display: inline-block;
+	margin-left: -4px;
+}
