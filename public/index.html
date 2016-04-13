@@ -37,85 +37,39 @@
         </div>
 
 
-        <div class="row text-center">
+        <div class="col-sm-12 col-md-12 col-lg-12 row text-center">
 
-            <div class="col-sm-12 col-md-12 col-lg-12" id="top_row">
+            <div class="col-sm-3 col-md-3 col-lg-3" id="player_left">
 
-                <div data-number="1" class="holes" id="hole1">
+                <div data-number="1" class="player" id="player1">
 
-                    <div class="element_hole">1</div>
-
-                </div>
-
-                <div data-number="2" class="holes" id="hole2">
-
-                    <div class="element_hole">2</div>
+                    <img class="player_img" src="/img/player_left.jpg">
 
                 </div>
 
-                <div data-number="3" class="holes" id="hole3">
+            </div>
 
-                    <div class="element_hole">3</div>
+
+            <div class="col-sm-6 col-md-6 col-lg-6" id="player_middle">
+
+                <!-- enter middle player -->
+
+            </div>
+
+
+            <div class="col-sm-3 col-md-3 col-lg-3" id="player_right">
+
+                <div data-number="2" class="player" id="player2">
+
+                    <img class="player_img" src="/img/player_right.jpg">
 
                 </div>
+
 
             </div>
 
         </div>
-
-
-        <div class="row text-center">
-
-            <div class="col-sm-12 col-md-12 col-lg-12" id="middle_row">
-
-                <div data-number="4" class="holes" id="hole4">
-
-                    <div class="element_hole">4</div>
-
-                </div>
-
-                <div data-number="5" class="holes" id="hole5">
-
-                    <div class="element_hole">5</div>
-
-                </div>
-
-                <div data-number="6" class="holes" id="hole6">
-
-                    <div class="element_hole">6</div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-         <div class="row text-center">
-
-            <div class="col-sm-12 col-md-12 col-lg-12" id="bottom_row">
-
-                <div data-number="7" class="holes" id="hole7">
-
-                    <div class="element_hole">7</div>
-
-                </div>
-
-                <div data-number="8" class="holes" id="hole8">
-
-                    <div class="element_hole">8</div>
-
-                </div>
-
-                <div data-number="9" class="holes" id="hole9">
-
-                    <div class="element_hole">9</div>
-
-                </div>
-
-            </div>
-
-        </div>       
+     
 
    </div>
 
@@ -125,38 +79,38 @@
     <script>
     "use strict";
 
-        var holes = $(".element_hole");
+        var players = $(".player_img");
 
 
 
         $(document).ready(function() {
             $("h4").click(function() {
-                randomHole();
+                randomPlayer();
             });
         });
 
         //generates a mole randomly in one of the squares
-        function randomHole() {
-            var random = Math.floor(Math.random() * 9);
-            moleAppear(holes.eq(random));
+        function randomPlayer() {
+            var random = Math.floor(Math.random() * 2);
+            playerAppear(players.eq(random));
             console.log(random);
         };
 
 
-        function moleAppear(element) {
+        function playerAppear(element) {
             element.fadeIn(500);
         };
 
 
         //click function remove mole - includes adding one to score
-        holes.click(function clickMole() {
-            holes.fadeOut(500);
+        players.click(function clickPlayer() {
+            players.fadeOut(500);
         });
 
 
-        function increaseScore() {
-            $("h3").innerHTML = ("Score: " + );
-        }
+        //function increaseScore() {
+        //   $("h3").innerHTML = ("Score: " + );
+        //}
 
 
 
