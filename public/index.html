@@ -32,6 +32,14 @@
 
         <div class="row text-center">
 
+            <h6>How Many Shots?</h6>
+
+            <input type="number" id="game_length"></input>
+
+        </div>
+
+        <div class="row text-center">
+
             <h3>Score: 0</h3>
 
         </div>
@@ -41,9 +49,9 @@
 
             <div class="col-sm-3 col-md-3 col-lg-3" id="player_left">
 
-                <div data-number="1" class="player" id="player1">
+                <div data-number="1" class="player">
 
-                    <img class="player_img" src="/img/player_left.jpg">
+                    <img class="player_img" id="player1" src="/img/player_left.png">
 
                 </div>
 
@@ -61,7 +69,7 @@
 
                 <div data-number="2" class="player" id="player2">
 
-                    <img class="player_img" src="/img/player_right.jpg">
+                    <img class="player_img" id="player2" src="/img/player_right.png">
 
                 </div>
 
@@ -81,11 +89,18 @@
 
         var players = $(".player_img");
 
+        var attempts = 0;
+
+        var numberOfShots = $("#game_length").value;
+
+        var score = 0;
+
 
 
         $(document).ready(function() {
             $("h4").click(function() {
-                randomPlayer();
+                interval();
+                enableClick();
             });
         });
 
@@ -98,19 +113,49 @@
 
 
         function playerAppear(element) {
+            trackAttempts();
             element.fadeIn(500);
+            element.fadeOut(1000);
         };
 
 
-        //click function remove mole - includes adding one to score
-        players.click(function clickPlayer() {
-            players.fadeOut(500);
-        });
+        //function to keep gene
+        function interval() {
+
+            var intervalId = setInterval(function () {
+
+                randomPlayer();
+
+                attempts++;
+                console.log(attempts);
+
+                //interval checker
+                if (attempts >= numberOfShots) {
+                    clearInterval(intervalId);
+                } 
+            }, 5000)
+        }
 
 
-        //function increaseScore() {
-        //   $("h3").innerHTML = ("Score: " + );
-        //}
+        //function to keep track of the player's score
+        function increaseScore() {
+           $("h3").text("Score: " + ++score + "/" + attempts);
+        };
+
+        //function to keep track of the player's attempts
+        function trackAttempts() {
+            $("h3").text("Score: " + score + "/" + attempts);
+        }
+
+
+        //event listeners
+        function enableClick() {
+            players.on("click", increaseScore);
+        }
+
+        function disableClick() {
+            players.off("click", increaseScore);
+        }
 
 
 
