@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Whack-A-Mole</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
+    <!--Google Fonts -->
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/css/whackamole.css">
+
+    <!-- I moved my JQuery up here because it said $ wasn't defined, when I left it with bootstrap down at the bottom -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+   <div class="container-fluid">
+
+        <div class="row text-center">
+
+            <h4>Click To Play!</h4>
+
+        </div>
+
+        <div class="row text-center">
+
+            <h3>Score: 0</h3>
+
+        </div>
+
+
+        <div class="row text-center">
+
+            <div class="col-sm-12 col-md-12 col-lg-12" id="top_row">
+
+                <div data-number="1" class="holes" id="hole1">
+
+                    <div class="element_hole">1</div>
+
+                </div>
+
+                <div data-number="2" class="holes" id="hole2">
+
+                    <div class="element_hole">2</div>
+
+                </div>
+
+                <div data-number="3" class="holes" id="hole3">
+
+                    <div class="element_hole">3</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="row text-center">
+
+            <div class="col-sm-12 col-md-12 col-lg-12" id="middle_row">
+
+                <div data-number="4" class="holes" id="hole4">
+
+                    <div class="element_hole">4</div>
+
+                </div>
+
+                <div data-number="5" class="holes" id="hole5">
+
+                    <div class="element_hole">5</div>
+
+                </div>
+
+                <div data-number="6" class="holes" id="hole6">
+
+                    <div class="element_hole">6</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+         <div class="row text-center">
+
+            <div class="col-sm-12 col-md-12 col-lg-12" id="bottom_row">
+
+                <div data-number="7" class="holes" id="hole7">
+
+                    <div class="element_hole">7</div>
+
+                </div>
+
+                <div data-number="8" class="holes" id="hole8">
+
+                    <div class="element_hole">8</div>
+
+                </div>
+
+                <div data-number="9" class="holes" id="hole9">
+
+                    <div class="element_hole">9</div>
+
+                </div>
+
+            </div>
+
+        </div>       
+
+   </div>
+
+
+
+
+    <script>
+    "use strict";
+
+        var holes = $(".element_hole");
+
+
+
+        $(document).ready(function() {
+            $("h4").click(function() {
+                randomHole();
+            });
+        });
+
+        //generates a mole randomly in one of the squares
+        function randomHole() {
+            var random = Math.floor(Math.random() * 9);
+            moleAppear(holes.eq(random));
+            console.log(random);
+        };
+
+
+        function moleAppear(element) {
+            element.fadeIn(500);
+        };
+
+
+        //click function remove mole - includes adding one to score
+        holes.click(function clickMole() {
+            holes.fadeOut(500);
+        });
+
+
+        function increaseScore() {
+            $("h3").innerHTML = ("Score: " + );
+        }
+
+
+
+    </script>
+
+
+
+<!-- Latest compiled and minified JavaScript/JQuery -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
