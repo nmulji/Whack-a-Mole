@@ -26,7 +26,7 @@
 
         <div class="row text-center">
 
-            <h4>Click To Play!</h4>
+            <h4 id="start_button">Click To Play!</h4>
 
         </div>
 
@@ -87,22 +87,26 @@
     <script>
     "use strict";
 
+        var startButton = $("#start_button");
+
         var players = $(".player_img");
 
         var attempts = 0;
 
-        var numberOfShots = $("#game_length").value;
+        var numberOfShots = $("#game_length").val();
 
         var score = 0;
 
 
 
         $(document).ready(function() {
-            $("h4").click(function() {
+            startButton.click(function() {
+                numberOfShots = $("#game_length").val();
                 interval();
                 enableClick();
             });
         });
+
 
         //generates a mole randomly in one of the squares
         function randomPlayer() {
@@ -112,14 +116,14 @@
         };
 
 
+        //effects/animations function
         function playerAppear(element) {
-            trackAttempts();
             element.fadeIn(500);
             element.fadeOut(1000);
         };
 
 
-        //function to keep gene
+        //function to keep generating basketball players
         function interval() {
 
             var intervalId = setInterval(function () {
@@ -127,7 +131,8 @@
                 randomPlayer();
 
                 attempts++;
-                console.log(attempts);
+
+                trackAttempts();
 
                 //interval checker
                 if (attempts >= numberOfShots) {
@@ -141,6 +146,7 @@
         function increaseScore() {
            $("h3").text("Score: " + ++score + "/" + attempts);
         };
+
 
         //function to keep track of the player's attempts
         function trackAttempts() {
