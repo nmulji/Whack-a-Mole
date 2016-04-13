@@ -3,6 +3,22 @@ body {
 	background-size: 100%;
 }
 
+#start_button {
+	border: 3px solid black;
+}
+
+
+#start_button:hover {
+	background: red;
+}
+
 img.player_img {
+	height: 20em;
+	width: 10em;
+	margin-top: 7em;
 	display: none;
+}
+
+#game_length {
+	text-align: center;
 }
